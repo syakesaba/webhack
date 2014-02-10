@@ -4,6 +4,7 @@
 import webapp2
 from case1 import Case1
 from case2 import Case2
+from case3 import Case3
 
 class Index(webapp2.RequestHandler):
     def get(self):
@@ -16,9 +17,12 @@ class Index(webapp2.RequestHandler):
 </head>
 <body>
 <ul>
-<li><a href="./1">1</a></li>
-<li><a href="./2">2</a></li>
-</ul>
+"""
++
+"""
+""".join([ '<li><a href="./%d">問題%d</a></li>' % (i+1,i+1) for i in range(3)])
++
+"""</ul>
 </body>
 </html>
 """)
@@ -26,5 +30,6 @@ class Index(webapp2.RequestHandler):
 ALL = [
 ("/sqli/",Index),
 ("/sqli/1",Case1),
-("/sqli/2",Case2)
+("/sqli/2",Case2),
+("/sqli/3",Case3)
 ]

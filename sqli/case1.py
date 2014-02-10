@@ -5,6 +5,10 @@ import webapp2
 import sqlite3
 
 class Case1(webapp2.RequestHandler):
+    """
+・SQLインジェクションを知っているかどうか
+・URLの変化に気づくかどうか
+    """
     ANSWER = "?id=1%20or%201"
     def get(self):
         memdb = sqlite3.connect(':memory:')
@@ -67,6 +71,7 @@ IDを入力してください。
 <b>%s</b> さん。""" % name)
                 except Exception as e:
                     pass
+            choser.close()
         except Exception as e:
             self.response.write(str(e))
         memdb.close()

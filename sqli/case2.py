@@ -5,6 +5,9 @@ import webapp2
 import sqlite3
 
 class Case2(webapp2.RequestHandler):
+    """
+・HTMLではなくHTTP通信に目を向けられているかどうか
+    """
     ANSWER = "?id=1%20or%201" # in POST
     def get(self):
         self.response.write("""
@@ -87,6 +90,7 @@ location.href=location.href;
 <b>%s</b> さん。""" % name)
                 except Exception as e:
                     pass
+            choser.close()
         except Exception as e:
             self.response.write(str(e))
         memdb.close()
