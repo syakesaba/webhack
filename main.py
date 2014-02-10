@@ -12,7 +12,7 @@ applications = webapp2.WSGIApplication(
 
 def main():
     from paste import httpserver
-    httpserver.serve(applications, host='127.0.0.1', port='80')
+    httpserver.serve(applications, host='0.0.0.0', port='80')
 
 if __name__ == '__main__':
     main()

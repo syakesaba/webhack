@@ -5,6 +5,7 @@ import webapp2
 import sqlite3
 
 class Case1(webapp2.RequestHandler):
+    ANSWER = "?id=1%20or%201"
     def get(self):
         memdb = sqlite3.connect(':memory:')
         initializer = memdb.cursor()
@@ -39,14 +40,25 @@ insert into Student values (-756398, \'<script>alert("成功です！ KEY: CHMOD
 </head>
 <body>""")
         self.response.write('ようこそ。')
-        print query.encode("utf-8")
+        print "SQL1: ",query.encode("utf-8")
         try:
             if not db_id:
                 raise Exception("""
-ID(0から9)を入力してください。
-<form name='f' method='GET' target='_self'>
-    <input type='text' name='id' maxLength='100' size=100>
-    <input type='submit'>
+IDを入力してください。
+<form target="_self" method="GET">
+<select name="id">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+</select></p>
+<input type="submit" value="送信">
 </form>
 """)
             for name in choser.execute(query):

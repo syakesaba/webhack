@@ -17,6 +17,7 @@ class Index(webapp2.RequestHandler):
 <body>
 <ul>
 <li><a href="./1">1</a></li>
+<li><a href="./2">2</a></li>
 </ul>
 </body>
 </html>

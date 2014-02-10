@@ -5,24 +5,58 @@ import webapp2
 import sqlite3
 
 class Case2(webapp2.RequestHandler):
+    ANSWER = "?id=1%20or%201" # in POST
     def get(self):
+        self.response.write("""
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+function submitit() {
+    var f = document.f;
+    var t = f.id.value;
+    if (t.length != 1 || isNaN(t) ) {
+        alert("正しい値を入力してください。");
+        return;
+    }
+    f.submit();
+}
+function rejectReturn(e){
+    if (!e) var e = window.event;
+    if(e.keyCode == 13)
+        return false;
+}
+document.onkeydown = rejectReturn
+</script>
+</head>
+<body>
+ID(0から9)を入力してください。
+<form name="f" method='POST' target='_self'>
+    <input type='text' name='id' onkeypress="rejectReturn(event)" maxLength='1' size=1>
+    <input type='button' value="送信" onclick="submitit()">
+</form>
+</body>
+</html>""")
+
+    def post(self):
         memdb = sqlite3.connect(':memory:')
         initializer = memdb.cursor()
         queries = """
 create table `Manager` (`id` INTEGER primary key, `name` CHAR[255], `sex` INTEGER);
 insert into Manager values (151, \'ミュウ\',2);
 create table `Student` (`id` INTEGER primary key, `name` CHAR[255], `sex` INTEGER);
-insert into Student values (0, \'佐田\',0);
+insert into Student values (0, \'鳩山\',0);
 insert into Student values (1, \'田中\',0);
-insert into Student values (2, \'鈴木\',1);
-insert into Student values (3, \'佐藤\',1);
-insert into Student values (4, \'後藤\',0);
-insert into Student values (5, \'伊藤\',0);
-insert into Student values (6, \'加賀\',1);
-insert into Student values (7, \'堀田\',0);
-insert into Student values (8, \'相葉\',0);
-insert into Student values (9, \'二宮\',0);
-insert into Student values (-912311, \'<script>alert("成功です！ KEY: CHOWNROOT:ROOT! ")</script><b>KEY</b>\',0);
+insert into Student values (2, \'麻生\',1);
+insert into Student values (3, \'小浜\',1);
+insert into Student values (4, \'福田\',0);
+insert into Student values (5, \'安部\',0);
+insert into Student values (6, \'佐藤\',1);
+insert into Student values (7, \'海部\',0);
+insert into Student values (8, \'山田\',0);
+insert into Student values (9, \'小泉\',0);
+insert into Student values (5454217, \'<script>alert("成功です！ KEY: CHOWNROOTROOT ")</script><b>KEY</b>\',0);
 """
         initializer.executescript(queries)
         initializer.close()
@@ -39,15 +73,13 @@ insert into Student values (-912311, \'<script>alert("成功です！ KEY: CHOWN
 </head>
 <body>""")
         self.response.write('ようこそ。')
-        print query.encode("utf-8")
+        print "SQL2",query.encode("utf-8")
         try:
             if not db_id:
                 raise Exception("""
-ID(0から9)を入力してください。
-<form name='f' method='POST' target='_self'>
-    <input type='text' name='id' maxLength='100' size=100>
-    <input type='submit'>
-</form>
+<script type="text/javascript">
+location.href=location.href;
+</script>
 """)
             for name in choser.execute(query):
                 try:
