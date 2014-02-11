@@ -6,7 +6,7 @@ import sqlite3
 
 class Case3(webapp2.RequestHandler):
     """
-・マスタテーブルの参照で他のテーブルの名前を取得できるかどうか
+・特殊テーブルの参照で他のテーブルの名前を取得できるかどうか
     """
     HINT1 = "?cmd=SELECT name FROM Student WHERE id = 1 or 1;"
     HINT2 = "?cmd=SELECT name FROM sqlite_master;"
