@@ -17,12 +17,10 @@ class Index(webapp2.RequestHandler):
 </head>
 <body>
 <ul>
-"""
-+
-"""
-""".join([ '<li><a href="./%d">問題%d</a></li>' % (i+1,i+1) for i in range(3)])
-+
-"""</ul>
+<li><a href="./1">問題1</a> - インフルエンザウイルスレベル</li>
+<li><a href="./2">問題2</a> - ミトコンドリアレベル</li>
+<li><a href="./3">問題3</a> - ミドリムシレベル</li>
+</ul>
 </body>
 </html>
 """)

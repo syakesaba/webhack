@@ -6,10 +6,11 @@ import sqlite3
 
 class Case3(webapp2.RequestHandler):
     """
-・SQLインジェクションを知っているかどうか
-・URLの変化に気づくかどうか
+・マスタテーブルの参照で他のテーブルの名前を取得できるかどうか
     """
-    HINT = "?id=1%20or%201"
+    HINT1 = "?cmd=SELECT name FROM Student WHERE id = 1 or 1;"
+    HINT2 = "?cmd=SELECT name FROM sqlite_master;"
+    ANSWER = "?cmd=SELECT name FROM SenseiIsNotToilet;"
     def get(self):
         memdb = sqlite3.connect(':memory:')
         initializer = memdb.cursor()
