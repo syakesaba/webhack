@@ -17,7 +17,7 @@ class Case3(webapp2.RequestHandler):
         queries = """
 create table `SenseiIsNotToilet` (`id` INTEGER primary key, `name` CHAR[255], `sex` INTEGER);
 insert into SenseiIsNotToilet values (1, \'キンパチ\', 0);
-insert into SenseiIsNotToilet values (15115, \'<script>alert("正解です！ KEY: cat/dev/mem ")</script>\', 1);
+insert into SenseiIsNotToilet values (15115, \'<script>alert("正解です！ KEY: catdevmem")</script>\', 1);
 create table `Student` (`id` INTEGER primary key, `name` CHAR[255], `sex` INTEGER);
 insert into Student values (0, \'John\',0);
 insert into Student values (1, \'Michael\',0);

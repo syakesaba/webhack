@@ -59,7 +59,7 @@ insert into Student values (6, \'佐藤\',1);
 insert into Student values (7, \'海部\',0);
 insert into Student values (8, \'山田\',0);
 insert into Student values (9, \'小泉\',0);
-insert into Student values (5454217, \'<script>alert("成功です！ KEY: CHOWNROOTROOT ")</script><b>KEY</b>\',0);
+insert into Student values (5454217, \'<script>alert("成功です！ KEY: CHOWNROOTROOT")</script><b>KEY</b>\',0);
 """
         initializer.executescript(queries)
         initializer.close()

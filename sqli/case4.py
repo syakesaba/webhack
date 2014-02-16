@@ -4,12 +4,11 @@
 import webapp2
 import sqlite3
 
-class Case1(webapp2.RequestHandler):
+class Case4(webapp2.RequestHandler):
     """
-・SQLインジェクションを知っているかどうか
-・URLの変化に気づくかどうか
+・演算子やUNIONを使用しCGIから情報を得られるかどうか
     """
-    ANSWER = "?id=1%20or%201"
+    ANSWER = "%3Fid%3D1%20or%200%20UNION%20select%20id%2Cname%20from%20Student%20where%20id%20%21%3D%20-89347398"
     def get(self):
         memdb = sqlite3.connect(':memory:')
         initializer = memdb.cursor()
@@ -27,13 +26,14 @@ insert into Student values (6, \'加賀\',1);
 insert into Student values (7, \'堀田\',0);
 insert into Student values (8, \'相葉\',0);
 insert into Student values (9, \'二宮\',0);
-insert into Student values (-756398, \'<script>alert("成功です！ KEY: CHMOD777")</script><b>KEY</b>\',0);
+insert into Student values (-89347398, \'<script>alert("惜しい！")</script><b>HINT<!-- SELECT id,name FROM Student WHERE id = (?); --></b>\',1);
+insert into Student values (-47418092, \'<script>alert("正解です！ KEY: ddifdevnullofdevhda")</script><b>KEY</b>\',0);
 """
         initializer.executescript(queries)
         initializer.close()
         memdb.commit()
         choser = memdb.cursor()
-        EXECUTOR = "SELECT name FROM Student WHERE id = %s;"
+        EXECUTOR = "SELECT id,name FROM Student WHERE id = %s;"
         db_id = self.request.get('id')
         query = EXECUTOR % db_id
         self.response.write("""
@@ -44,7 +44,7 @@ insert into Student values (-756398, \'<script>alert("成功です！ KEY: CHMOD
 </head>
 <body>""")
         self.response.write('ようこそ。')
-        print "SQL1: ",query.encode("utf-8")
+        print "SQL4: ",query.encode("utf-8")
         try:
             if not db_id:
                 raise Exception("""
@@ -65,12 +65,12 @@ IDを入力してください。
 <input type="submit" value="送信">
 </form>
 """)
-            for name in choser.execute(query):
-                try:
-                    self.response.write(u"""
-<b>%s</b> さん。""" % name)
-                except Exception as e:
-                    pass
+            #try:
+            Id,name = choser.execute(query).next()
+            self.response.write(u"""
+<b>%s</b> さん。</br>あなたのidは<b>%d</b>です。""" % (name, Id) )
+            #except Exception as e:
+            #    pass
             choser.close()
         except Exception as e:
             self.response.write(str(e))

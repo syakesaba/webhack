@@ -23,6 +23,7 @@ class Index(webapp2.RequestHandler):
 <br>
 <hr>
 <a href="/help">ヘルプ</a>
+<a href="file:///C:/">TEST</a>
 </body>
 </html>
 """)
