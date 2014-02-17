@@ -8,7 +8,7 @@ class Case4(webapp2.RequestHandler):
     """
 ・演算子やUNIONを使用しCGIから情報を得られるかどうか
     """
-    ANSWER = "%3Fid%3D1%20or%200%20UNION%20select%20id%2Cname%20from%20Student%20where%20id%20%21%3D%20-89347398"
+    ANSWER = "?id=1 or 0 UNION select id,name from Student where id != -89347398"
     def get(self):
         memdb = sqlite3.connect(':memory:')
         initializer = memdb.cursor()

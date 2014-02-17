@@ -15,7 +15,7 @@ class Index(webapp2.RequestHandler):
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-ようこそ。</br>
+ようこそ、ようこそ。</br>
 <ul>
 <li><a href="./sqli/">SQLインジェクション</a></li>
 <li><a href="./xss/">クロスサイトスクリプティング</a></li>
