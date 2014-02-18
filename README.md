@@ -10,7 +10,9 @@ Usage
 =======
 $ git clone git@github.com:syakesaba/webhack.git  
 $ cd webhack  
-$ python main.py
+$ python main.py  
+  
+See <http://syakesaba.minidns.net/>
 
 Framework
 =======
