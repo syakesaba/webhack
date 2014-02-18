@@ -4,6 +4,7 @@
 import sys
 import webapp2
 from helppage import Help
+from hintpage import Hint
 from static_handler import StaticFileHandler
 
 class Index(webapp2.RequestHandler):
@@ -23,8 +24,8 @@ class Index(webapp2.RequestHandler):
 </ul>
 <br>
 <hr>
-<a href="/help">ヘルプ</a>
-<a href="file:///C:/">TEST</a>
+<a href="/help">ヘルプ</a> 
+<a href="/hint">ヒント</a>
 </body>
 </html>
 """)
@@ -32,5 +33,6 @@ class Index(webapp2.RequestHandler):
 ALL = [
 ("/",Index),
 ("/help",Help),
+("/hint",Hint),
 ("/favicon.ico",StaticFileHandler),
 ]
