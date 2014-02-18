@@ -29,7 +29,7 @@ insert into Student values (6, \'Bob\',1);
 insert into Student values (7, \'Lenny\',0);
 insert into Student values (8, \'Squeeze\',0);
 insert into Student values (9, \'non-free\',0);
-insert into Student values (-756398, \'<script>alert("惜しい！\nヒント: 特殊テーブルは\nsqlite_master")</script><b>ヒント</b>\',0);
+insert into Student values (-756398, \'<script>alert("惜しい！\\nヒント: 特殊テーブルは\\nsqlite_master")</script><b>ヒント</b>\',0);
 """
         initializer.executescript(queries)
         initializer.close()
