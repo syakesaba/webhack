@@ -26,7 +26,7 @@ insert into Student values (6, \'加賀\',1);
 insert into Student values (7, \'堀田\',0);
 insert into Student values (8, \'相葉\',0);
 insert into Student values (9, \'二宮\',0);
-insert into Student values (-89347398, \'<script>alert("惜しい！")</script><b>HINT<!-- SELECT id,name FROM Student WHERE id = (?); --></b>\',1);
+insert into Student values (-89347398, \'<script>alert("惜しい！\nヒント:クエリは\nSELECT id,name FROM Student WHERE id = "%s"; ")</script><b>ヒント</b>\',1);
 insert into Student values (-47418092, \'<script>alert("正解です！ KEY: ddifdevnullofdevhda")</script><b>KEY</b>\',0);
 """
         initializer.executescript(queries)
@@ -40,6 +40,7 @@ insert into Student values (-47418092, \'<script>alert("正解です！ KEY: ddi
 <!DOCTYPE html>
 <html>
 <head>
+<title>SQL Injection - 4 : SQLとCGIの予測</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>""")

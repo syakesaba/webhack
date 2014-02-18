@@ -40,6 +40,7 @@ insert into Student values (-756398, \'<script>alert("成功です！ KEY: CHMOD
 <!DOCTYPE html>
 <html>
 <head>
+<title>SQL Injection - 1 : HTMLから離れる</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>""")

@@ -14,6 +14,7 @@ class Case2(webapp2.RequestHandler):
 <!DOCTYPE html>
 <html>
 <head>
+<title>SQL Injection - 2 : 通信に目をつける</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script type="text/javascript">
 function submitit() {
@@ -72,6 +73,7 @@ insert into Student values (5454217, \'<script>alert("成功です！ KEY: CHOWN
 <!DOCTYPE html>
 <html>
 <head>
+<title>SQL Injection - 2 : 通信に目をつける</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>""")
