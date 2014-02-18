@@ -62,7 +62,7 @@ IDを入力してください。
 <option value="SELECT name FROM Student WHERE id = 7;">7</option>
 <option value="SELECT name FROM Student WHERE id = 8;">8</option>
 <option value="SELECT name FROM Student WHERE id = 9;">9</option>
-</select></p>
+</select>
 <input type="submit" value="送信">
 </form>
 """)

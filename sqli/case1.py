@@ -61,7 +61,7 @@ IDを入力してください。
 <option value="7">7</option>
 <option value="8">8</option>
 <option value="9">9</option>
-</select></p>
+</select>
 <input type="submit" value="送信">
 </form>
 """)
