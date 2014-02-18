@@ -4,6 +4,7 @@
 import sys
 import webapp2
 from helppage import Help
+from static_handler import StaticFileHandler
 
 class Index(webapp2.RequestHandler):
     def get(self):
@@ -30,5 +31,6 @@ class Index(webapp2.RequestHandler):
 
 ALL = [
 ("/",Index),
-("/help",Help)
+("/help",Help),
+("/favicon.ico",StaticFileHandler),
 ]
