@@ -8,7 +8,9 @@ Pure Python.(with sqlite3)
 
 Usage
 =======
-python main.py
+$ git clone git@github.com:syakesaba/webhack.git  
+$ cd webhack  
+$ python main.py
 
 Framework
 =======
