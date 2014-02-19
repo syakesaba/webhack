@@ -4,14 +4,13 @@
 import webapp2
 import sqlite3
 
-APP_CHARSET = "shift_jis"
-PROXY_CHARSET = "latin_1"
+PROXY_CHARSET = "gbk"
 
 class Case6(webapp2.RequestHandler):
     """
 ・Shift_JISの持つ、特殊な文字に気づくかどうか
     """
-    ANSWER="id=\'or 1=1--"
+    ANSWER="id=%C6%BF%27or1=1--"
     def get(self):
         memdb = sqlite3.connect(':memory:')
         initializer = memdb.cursor()
@@ -51,9 +50,18 @@ insert into `passwd` values ('', 1949, 1919, '<script>alert(/Good! KEY: catauthl
         choser.execute("select id from passwd;")
         ids = [i[0] for i in choser.fetchall()]
         EXECUTOR = "SELECT * FROM passwd WHERE id = '%s';"
-        db_id = self.request.get('id')
+        q = self.request.query_string
+        i = q.find("id=")
+        if i < 0:
+            db_id = ""
+        else:
+            db_id = q[i+3:] # id=&id=.... fuck
+        import urllib
+        db_id = urllib.unquote(db_id)
         query = EXECUTOR % db_id.replace("'","''")
-        query = query.encode(APP_CHARSET).decode(PROXY_CHARSET)
+        query = query.decode(PROXY_CHARSET)
+        if query.count("'") != 4:
+            print "!",query
         self.response.write("""
 <!DOCTYPE html>
 <html>
