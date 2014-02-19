@@ -8,7 +8,7 @@ class Case5(webapp2.RequestHandler):
     """
 ・SQLを完成できるかどうか。
     """
-    ANSWER="?id=''  or 1 = 1--"
+    ANSWER="id=\'or 1=1--"
     def get(self):
         memdb = sqlite3.connect(':memory:')
         initializer = memdb.cursor()
