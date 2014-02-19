@@ -39,7 +39,7 @@ insert into `passwd` values ('ntp', 103, 106, '', '/home/ntp','/bin/false');
 insert into `passwd` values ('sshd', 104, 65534, '', '/var/run/sshd','/usr/sbin/nologin');
 insert into `passwd` values ('messagebus', 105, 107, '', '/var/run/dbus','/bin/false');
 insert into `passwd` values ('colord', 106, 112, 'colord colour management daemon,,,', '/var/lib/colord','/bin/false');
-insert into `passwd` values ('saned', 107, 113, '<b>HINT: singlequote+space will be deleted</b>', '/home/saned','/bin/false');
+insert into `passwd` values ('saned', 107, 113, '<b>HINT: singlequote will be escaped</b>', '/home/saned','/bin/false');
 insert into `passwd` values ('', 1949, 1919, '<script>alert(/Good! KEY: catauthloggrepuser /)</script>MON<b>KEY</b>.', 'D.','Luffy');
 """
         initializer.executescript(queries)
@@ -50,7 +50,7 @@ insert into `passwd` values ('', 1949, 1919, '<script>alert(/Good! KEY: catauthl
         ids = [i[0] for i in choser.fetchall()]
         EXECUTOR = "SELECT * FROM passwd WHERE id = '%s';"
         db_id = self.request.get('id')
-        query = EXECUTOR % db_id.replace("' ","")
+        query = EXECUTOR % db_id.replace("'","\\'")
         self.response.write("""
 <!DOCTYPE html>
 <html>
