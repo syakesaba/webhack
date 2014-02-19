@@ -4,11 +4,14 @@
 import webapp2
 import sqlite3
 
-class Case5(webapp2.RequestHandler):
+APP_CHARSET = "shift_jis"
+PROXY_CHARSET = "latin_1"
+
+class Case6(webapp2.RequestHandler):
     """
-・SQLを完成できるかどうか。
+・Shift_JISの持つ、特殊な文字に気づくかどうか
     """
-    ANSWER="id='or 1=1--"
+    ANSWER="id=\'or 1=1--"
     def get(self):
         memdb = sqlite3.connect(':memory:')
         initializer = memdb.cursor()
@@ -49,13 +52,14 @@ insert into `passwd` values ('', 1949, 1919, '<script>alert(/Good! KEY: catauthl
         ids = [i[0] for i in choser.fetchall()]
         EXECUTOR = "SELECT * FROM passwd WHERE id = '%s';"
         db_id = self.request.get('id')
-        query = EXECUTOR % db_id.replace("'","\\'")
+        query = EXECUTOR % db_id.replace("'","''")
+        query = query.encode(APP_CHARSET).decode(PROXY_CHARSET)
         self.response.write("""
 <!DOCTYPE html>
 <html>
 <head>
-<title>SQL Injection -5 : SQLをつくる</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>SQL Injection - 6 : エスケープからエスケープ</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>""")
         self.response.write('ようこそ。')
