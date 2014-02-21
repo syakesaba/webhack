@@ -3,6 +3,7 @@
 
 import webapp2
 import sqlite3
+import time
 
 class Case5(webapp2.RequestHandler):
     """
@@ -59,7 +60,7 @@ insert into `passwd` values ('', 1949, 1919, '<script>alert(/Good! KEY: catauthl
 </head>
 <body>""")
         self.response.write('ようこそ。')
-        print "SQL5: ",query.encode("utf-8")
+        print time.ctime(),self.request.remote_addr,"SQL5: ",query.encode("utf-8")
         try:
             if not db_id:
                 raise Exception("""

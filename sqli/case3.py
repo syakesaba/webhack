@@ -3,6 +3,7 @@
 
 import webapp2
 import sqlite3
+import time
 
 class Case3(webapp2.RequestHandler):
     """
@@ -46,7 +47,7 @@ insert into Student values (-756398, \'<script>alert("惜しい！\\nヒント: 
 <body>""")
         self.response.write("""
 ようこそ。""")
-        print "SQL3: ",query.encode("utf-8")
+        print time.ctime(),self.request.remote_addr,"SQL3: ",query.encode("utf-8")
         try:
             if not query:
                 raise Exception("""
