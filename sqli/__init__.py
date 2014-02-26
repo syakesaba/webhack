@@ -7,7 +7,7 @@ from case2 import Case2
 from case3 import Case3
 from case4 import Case4
 from case5 import Case5
-#from case6 import Case6
+from case6 import Case6
 
 class Index(webapp2.RequestHandler):
     def get(self):
@@ -38,5 +38,5 @@ ALL = [
 ("/sqli/3",Case3),
 ("/sqli/4",Case4),
 ("/sqli/5",Case5),
-#("/sqli/6",Case6)
+("/sqli/6",Case6),
 ]
