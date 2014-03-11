@@ -7,7 +7,7 @@ from case2 import Case2
 from case3 import Case3
 from case4 import Case4
 from case5 import Case5
-#from case6 import Case6
+from case6 import Case6
 
 from case31 import Case31
 
@@ -27,7 +27,7 @@ class Index(webapp2.RequestHandler):
 <li><a href="./3">問題3</a> - ミドリムシレベル</li>
 <li><a href="./4">問題4</a> - ミジンコレベル</li>
 <li><a href="./5">問題5</a> - ボウフラレベル</li>
-<!-- <li><a href="./6">問題6</a> - アメンボレベル</li> -->
+<li><a href="./6">問題6</a> - アメンボレベル</li>
 <li><a href="./31">問題31</a> - ヒトレベル</li>
 </ul>
 </body>
@@ -41,6 +41,6 @@ ALL = [
 ("/sqli/3",Case3),
 ("/sqli/4",Case4),
 ("/sqli/5",Case5),
+("/sqli/6",Case6),
 ("/sqli/31",Case31),
-#("/sqli/6",Case6),
 ]
