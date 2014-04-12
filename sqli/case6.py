@@ -70,7 +70,7 @@ ID:<br>
                 db_ret = choser.fetchall()
                 if len(db_ret) != 1 or len(db_ret[0]) != 2:
                     self.response.write("""
-Invalid ID <b>%s</b>. Try Again.
+Invalid ID '<b>%s</b>'. Try Again.
     """ % get_id)
                 else:
                     db_salt,db_hash = db_ret[0]
@@ -86,7 +86,7 @@ Invalid ID <b>%s</b>. Try Again.
 だが君はrootじゃないからキーは渡せないなあ＾＾""")
                     else:
                         self.response.write("""
-Invalid Password <b>%s</b>. Try Again<br>""" % get_passwd)
+Invalid Password '<b>%s</b>' for user '<b>%s</b>'. Try Again.<br>""" % (get_passwd,get_id))
             except Exception as e:
                 self.response.write("<br>Application Error. <b>%s</b><br>" % str(e))
         choser.close()

@@ -9,7 +9,7 @@ class Case2(webapp2.RequestHandler):
     """
 ・HTMLではなくHTTP通信に目を向けられているかどうか
     """
-    ANSWER = "?id=1%20or%201" # in POST
+    ANSWER = "?id=1 or 1" # in POST
     def get(self):
         self.response.write("""
 <!DOCTYPE html>

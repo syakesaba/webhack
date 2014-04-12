@@ -10,7 +10,7 @@ class Case1(webapp2.RequestHandler):
 ・SQLインジェクションを知っているかどうか
 ・URLの変化に気づくかどうか
     """
-    ANSWER = "?id=1%20or%201"
+    ANSWER = "?id=1 or 1"
     def get(self):
         memdb = sqlite3.connect(':memory:')
         initializer = memdb.cursor()
