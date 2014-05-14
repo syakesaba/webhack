@@ -36,6 +36,13 @@ document.onkeydown = rejectReturn
 </script>
 </head>
 <body>
+""")
+    db_id = self.request.get("id")
+    if db_id is not None and not db_id in "0123456789":
+        self.response.write(""""<script>
+alert(/その試みはとても尊いものだ。\\nヒントは、LiveHTTPHeadersもしくはTemperDataだ。/.source)
+</script>""")
+    self.response.write("""
 ID(0から9)を入力してください。
 <form name="f" method='POST' target='_self'>
     <input type='text' name='id' onkeypress="rejectReturn(event)" maxLength='1' size=1>
