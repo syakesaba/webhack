@@ -22,7 +22,7 @@ function submitit() {
     var f = document.f;
     var t = f.id.value;
     if (t.length != 1 || isNaN(t) ) {
-        alert("正しい値を入力してください。");
+        alert("正しい数字を入力してください。");
         return;
     }
     f.submit();
@@ -37,12 +37,12 @@ document.onkeydown = rejectReturn
 </head>
 <body>
 """)
-    db_id = self.request.get("id")
-    if db_id is not None and not db_id in "0123456789":
-        self.response.write(""""<script>
+        db_id = self.request.get("id")
+        if db_id is not None and not db_id in "0123456789":
+            self.response.write(""""<script>
 alert(/その試みはとても尊いものだ。\\nヒントは、LiveHTTPHeadersもしくはTemperDataだ。/.source)
 </script>""")
-    self.response.write("""
+        self.response.write("""
 ID(0から9)を入力してください。
 <form name="f" method='POST' target='_self'>
     <input type='text' name='id' onkeypress="rejectReturn(event)" maxLength='1' size=1>
